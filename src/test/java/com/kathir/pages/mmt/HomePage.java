@@ -29,10 +29,10 @@ public class HomePage extends BasePage {
         DriverManager.getDriver().switchTo().frame(frame);
     }
 
-    public void switchToWindow(String title){
+    public void switchToWindow(String title) {
 
-       String parentWindow=  DriverManager.getDriver().getWindowHandle();
-       Set<String> Windows=  DriverManager.getDriver().getWindowHandles();
+        String parentWindow = DriverManager.getDriver().getWindowHandle();
+        Set<String> Windows = DriverManager.getDriver().getWindowHandles();
         for (String handle : Windows) {
             if (!handle.equals(parentWindow)) {
                 // Switch to the child window
@@ -40,9 +40,8 @@ public class HomePage extends BasePage {
                 System.out.println("Switched to Child Window with Handle: " + handle);
             }
 
-       }
+        }
 
 
-
-    }
+    }}
 
