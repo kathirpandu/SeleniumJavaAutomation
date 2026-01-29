@@ -1,0 +1,32 @@
+# ========== MAVEN ==========
+target/
+*.log
+
+# ========== TEST REPORTS ==========
+allure-results/
+allure-report/
+surefire-reports/
+test-output/
+
+# ========== IDE FILES ==========
+.idea/
+*.iml
+
+# Eclipse
+.project
+.classpath
+.settings/
+
+# ========== OS FILES ==========
+.DS_Store
+Thumbs.db
+
+# ========== DRIVERS ==========
+drivers/
+*.exe
+
+# ========== SCREENSHOTS ==========
+screenshots/
+
+# ========== TEMP FILES ==========
+*.tmp
