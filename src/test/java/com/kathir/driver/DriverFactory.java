@@ -16,8 +16,8 @@ public final class DriverFactory {
         if(!"chrome".equalsIgnoreCase(browser)){
             throw new FrameworkException("Unsupported browser: " + browser);
         }
-
-        WebDriverManager.chromedriver().setup();
+        WebDriverManager.chromedriver().clearDriverCache().setup();
+//        WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--disable-notifications","--disable-popup-blocking","--start-maximized");
         if(headless) options.addArguments("--headless=new");
