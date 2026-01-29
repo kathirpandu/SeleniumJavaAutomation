@@ -6,7 +6,7 @@ import org.openqa.selenium.By;
 
 import java.util.Set;
 
-import static com.sun.org.apache.xml.internal.security.keys.keyresolver.KeyResolver.iterator;
+
 
 public class HomePage extends BasePage {
     private final By flightsTab = By.xpath("//li[contains(@class,'menu_Flights')]");
@@ -33,11 +33,16 @@ public class HomePage extends BasePage {
 
        String parentWindow=  DriverManager.getDriver().getWindowHandle();
        Set<String> Windows=  DriverManager.getDriver().getWindowHandles();
-
+        for (String handle : Windows) {
+            if (!handle.equals(parentWindow)) {
+                // Switch to the child window
+                DriverManager.getDriver().switchTo().window(handle);
+                System.out.println("Switched to Child Window with Handle: " + handle);
+            }
 
        }
 
 
 
     }
-}
+
