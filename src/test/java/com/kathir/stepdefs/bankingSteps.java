@@ -6,16 +6,18 @@ import io.cucumber.java.en.When;
 
 public class bankingSteps {
 
+    HomePage homePage = new HomePage();
     @When("user Login HDFC NetBanking")
     public void user_Login() {
-        new HomePage().switchToFrame("login_page");
-        new HomePage().cutIDInpt();
-        new HomePage().clickContinue();
+        homePage.switchToFrame("login_page");
+        homePage.cutIDInpt();
+        homePage.clickContinue();
     }
-    
+
+
     @When("Entering Credentials")
     public void user_Entering() {
-        new HomePage().clickFlights();
+        homePage.clickFlights();
 
     }
 

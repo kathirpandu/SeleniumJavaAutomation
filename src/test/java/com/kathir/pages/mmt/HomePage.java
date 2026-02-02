@@ -3,12 +3,14 @@ package com.kathir.pages.mmt;
 import com.kathir.base.BasePage;
 import com.kathir.driver.DriverManager;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 
 import java.util.Set;
 
 
 
 public class HomePage extends BasePage {
+   
     private final By flightsTab = By.xpath("//li[contains(@class,'menu_Flights')]");
     private final By custID = By.xpath("//input[@name='fldLoginUserId']");
     private final By custCont = By.xpath("//a[text()='CONTINUE']");
@@ -24,9 +26,14 @@ public class HomePage extends BasePage {
         click(custCont);
     }
 
+   
+    private static WebDriver getDriver() {
+        return DriverManager.getDriver();
+    }
+
     public void switchToFrame(String frame){
-        DriverManager.getDriver().switchTo().defaultContent();
-        DriverManager.getDriver().switchTo().frame(frame);
+        getDriver().switchTo().defaultContent();
+        getDriver().switchTo().frame(frame);
     }
 
     public void switchToWindow(String title) {
