@@ -17,6 +17,7 @@ public class bankingSteps {
 
     @When("Entering Credentials")
     public void user_Entering() {
+
         homePage.clickFlights();
 
     }
