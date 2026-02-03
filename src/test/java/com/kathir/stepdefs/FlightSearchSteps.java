@@ -2,13 +2,22 @@ package com.kathir.stepdefs;
 
 
 import com.kathir.pages.mmt.FlightsPage;
+import com.kathir.pages.mmt.HomePage;
 import io.cucumber.java.en.*;
 
 import org.testng.Assert;
 
 public class FlightSearchSteps {
 
-    private final FlightsPage flightsPage = new FlightsPage();
+
+    private final FlightsPage flightsPage;   // ✅ Declare
+    private final HomePage homePage;         // ✅ Declare
+
+    // PicoContainer injects these
+    public FlightSearchSteps(FlightsPage flightsPage, HomePage homePage) {
+        this.flightsPage = flightsPage;      // ✅ Assign
+        this.homePage = homePage;
+    }
 
     @And("user selects round trip")
     public void user_selects_round_trip() {

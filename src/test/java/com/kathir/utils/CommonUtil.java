@@ -48,7 +48,7 @@ public final class CommonUtil {
         return getWait().until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
-    public static WebElement waitForClickable(By locator) {
+    public static  WebElement waitForClickable(By locator) {
         return getWait().until(ExpectedConditions.elementToBeClickable(locator));
     }
 
@@ -211,13 +211,13 @@ public final class CommonUtil {
 
     /* ========================= From Old Projects ========================= */
 
-    public void terminateBrowser() {
+    public static void terminateBrowser() {
         if (getDriver() != null) getDriver().quit();
     }
 
     // ================= ALERT HANDLING =================
 
-    public boolean loginPageCheck() {
+    public static boolean loginPageCheck() {
         boolean login = false;
         try {
             Alert alert = getDriver().switchTo().alert();
@@ -232,7 +232,7 @@ public final class CommonUtil {
         return login;
     }
 
-    public void unExpectedAlertHandling() throws AWTException {
+    public static void unExpectedAlertHandling() throws AWTException {
         try {
             Alert alert = getDriver().switchTo().alert();
             String text = alert.getText();
@@ -246,7 +246,7 @@ public final class CommonUtil {
 
     // ================= SCREENSHOTS =================
 
-    public void attachScreenshot(String tcName) throws IOException {
+    public static void attachScreenshot(String tcName) throws IOException {
         File src = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.FILE);
         File dest = new File("screenshots/" + tcName + "_" + System.currentTimeMillis() + ".png");
         try {
@@ -257,7 +257,7 @@ public final class CommonUtil {
         logger.info("Screenshot saved: " + dest.getAbsolutePath());
     }
 
-//    public void alertScreenshot(String tcName) throws Exception {
+//    public static void alertScreenshot(String tcName) throws Exception {
 //        BufferedImage image = new Robot().createScreenCapture(
 //                new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()));
 //        File file = new File("screenshots/" + tcName + "_" + System.currentTimeMillis() + ".png");
@@ -266,7 +266,7 @@ public final class CommonUtil {
 
     // ================= WINDOW HANDLING =================
 
-    public void closeAllWindowsExceptLogin() {
+    public static void closeAllWindowsExceptLogin() {
         String mainWindow = getDriver().getWindowHandle();
         for (String handle : getDriver().getWindowHandles()) {
             if (!handle.equals(mainWindow)) {
@@ -279,7 +279,7 @@ public final class CommonUtil {
 
     // ================= ELEMENT UTILITIES =================
 
-    public void verifyValue(By element, String expectedValue) {
+    public static void verifyValue(By element, String expectedValue) {
         try {
             WebElement el = getDriver().findElement(element);
             String actual = el.getText().isEmpty() ? el.getAttribute("value") : el.getText();
@@ -293,7 +293,7 @@ public final class CommonUtil {
         }
     }
 
-    public void waitForTextfieldNotEmpty(By element) {
+    public static void waitForTextfieldNotEmpty(By element) {
         WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(30));
         wait.until(d -> !getDriver().findElement(element).getAttribute("value").isEmpty());
     }
@@ -332,7 +332,7 @@ public final class CommonUtil {
 
     // ================= TABLE =================
 
-    public void verifyTextInTableColumn(String tableId, int columnIndex, String expectedText) {
+    public static void verifyTextInTableColumn(String tableId, int columnIndex, String expectedText) {
         WebElement table = getDriver().findElement(By.id(tableId));
         List<WebElement> rows = table.findElements(By.tagName("tr"));
 
@@ -348,7 +348,7 @@ public final class CommonUtil {
 
     // ================= ANGULAR WAIT =================
 
-    public void waitForAngular() {
+    public static void waitForAngular() {
         WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(30));
         wait.until(webDriver ->
                 ((JavascriptExecutor) webDriver)
@@ -383,7 +383,7 @@ public final class CommonUtil {
 
     // ================= COPY DISABLED FIELD =================
 
-    public String getDisabledTextValueForAngular(By element) {
+    public static String getDisabledTextValueForAngular(By element) {
         try {
             WebElement el = getDriver().findElement(element);
             new Actions(getDriver()).doubleClick(el).perform();

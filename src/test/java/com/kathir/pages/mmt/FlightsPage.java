@@ -1,6 +1,7 @@
 package com.kathir.pages.mmt;
 
 import com.kathir.base.BasePage;
+import com.kathir.context.TestContext;
 import com.kathir.driver.DriverManager;
 import com.kathir.utils.WaitUtil;
 import org.openqa.selenium.By;
@@ -11,6 +12,9 @@ import java.util.List;
 
 public class FlightsPage extends BasePage {
 
+    public FlightsPage(TestContext context) {   // ✅ Pico will inject this
+        super(context);
+    }
     // Close popup if present
     private final By closePopup = By.xpath("//span[@class='commonModal__close']");
 

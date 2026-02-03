@@ -1,11 +1,19 @@
 package com.kathir.base;
 
+import com.kathir.context.TestContext;
 import com.kathir.driver.DriverManager;
 import com.kathir.utils.WaitUtil;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class BasePage {
+    protected WebDriver driver;
+
+    public BasePage(TestContext context) {
+        this.driver = context.getDriver();
+    }
+
     protected WebElement find(By locator){
         return WaitUtil.waitForVisible(locator);
     }

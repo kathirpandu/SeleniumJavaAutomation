@@ -6,11 +6,16 @@ import io.cucumber.java.en.When;
 
 public class CommonSteps {
 
-//    @When("user selects flights option")
-//    public void user_is_on_makemytrip() { new HomePage().clickFlights(); }
-//
+    private final HomePage homePage;   // ✅ Declare
+
+    // PicoContainer will inject HomePage automatically
+    public CommonSteps(HomePage homePage) {
+        this.homePage = homePage;
+    }
+
     @When("user selects flights option")
-    public void user_selects_flights_option() { new HomePage().clickFlights(); }
+    public void user_selects_flights_option() {
+         homePage.clickFlights(); }
 
     @Then("framework should execute successfully")
     public void framework_should_execute_successfully() { }
