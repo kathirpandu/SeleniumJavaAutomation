@@ -3,6 +3,7 @@ package com.kathir.runners;
 import com.kathir.programs.InputPrograms;
 
 import static com.kathir.programs.InputPrograms.findDuplicates;
+import static com.kathir.programs.InputPrograms.reverseString;
 
 public class TestRunnerInd {
 
@@ -10,7 +11,7 @@ public class TestRunnerInd {
         String input = "kathiravan";
 
        findDuplicates(input);
-
+       reverseString(input);
     }
 
 }
