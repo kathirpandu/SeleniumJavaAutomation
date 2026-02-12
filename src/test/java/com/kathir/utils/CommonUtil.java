@@ -27,6 +27,7 @@ import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
 import java.util.Set;
+import java.util.function.Supplier;
 
 public final class CommonUtil {
     private static final Logger logger = LogManager.getLogger(CommonUtil.class);
@@ -402,6 +403,29 @@ public final class CommonUtil {
             logger.error("Copy disabled text failed", e);
         }
         return null;
+    }
+
+    public static void waitUntil(Supplier<Boolean> condition,
+                                 Duration timeout,
+                                 Duration pollingInterval) {
+
+        long endTime = System.currentTimeMillis() + timeout.toMillis();
+
+        while (System.currentTimeMillis() < endTime) {
+
+            try {
+                if (condition.get()) {
+                    return;
+                }
+
+                Thread.sleep(pollingInterval.toMillis());
+
+            } catch (Exception e) {
+                // Ignore exception and continue polling
+            }
+        }
+
+        throw new RuntimeException("Condition not met within timeout");
     }
 
 }
