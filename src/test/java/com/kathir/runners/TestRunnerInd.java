@@ -8,8 +8,9 @@ public class TestRunnerInd {
 
     public static void main(String[] args){
         String input = "kathiravan";
+
         int value=2999;
-        int[] arr={1,1, 2, 3, 10, 15, 20};
+        int[] arr={1,1, 2, 3, 10, 15, 20,0};
 
 //        findDuplicates(input);
 //        reverseString(input);
@@ -21,8 +22,12 @@ public class TestRunnerInd {
 //        fibonacci(value);
 //        removeDuplicates(arr);
 //        StringPermutation("testng");
-          isPrime(value);
-          System.out.println(sumDigits(value));
+//        isPrime(value);
+//        System.out.println(sumDigits(value));
+//        checkPermutation(arr);
+//        checkandSort(arr);
+//        removeDuplicatesStepByStep(arr);
+          findVowels(input);
     }
 
 }

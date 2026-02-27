@@ -211,10 +211,200 @@ public class InputPrograms {
         return result;
     }
 
+    public static void letterDigit(){
+    String input = "!4@T#6s%1e*9t";
+
+    String letters = input.replaceAll("[^A-Za-z]", "");
+    String digits = input.replaceAll("[^0-9]", "");
+
+    char[] letterArr = letters.toCharArray();
+    char[] digitArr = digits.toCharArray();
+
+        Arrays.sort(letterArr);
+        Arrays.sort(digitArr);
+
+    StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < letterArr.length; i++) {
+        sb.append(Character.toUpperCase(letterArr[i]))
+                .append(digitArr[i])
+                .append(" ");
+    }
+
+        System.out.println(sb.toString().trim());
+}
 
 
+    public static void checkPermutation(int[] arr) {
+
+        int sum = 0;
+
+        // Step 1: Calculate total sum
+        for (int num : arr) {
+            sum += num;
+        }
+
+        System.out.println("Total Sum = " + sum);
+
+        boolean found = false;
+
+        // Step 2: Permutation traversal
+        for (int i = 0; i < arr.length; i++) {
+
+            for (int j = 0; j < arr.length; j++) {
+
+                if (i == j) {
+                    continue; // Skip same index only
+                }
+
+                int product = arr[i] * arr[j];
+
+                System.out.println(i + " * " + j + " → "
+                        + arr[i] + " * " + arr[j] + " = " + product);
+
+                if (product == sum) {
+                    System.out.println("Match Found at index "
+                            + i + " and " + j);
+                    found = true;
+                }
+            }
+        }
+
+        if (!found) {
+            System.out.println("No matching permutation pair found.");
+        }
+    }
 
 
+    public static void checkandSort(int[] arr){
+
+        boolean isSorted = true;
+        System.out.println("Before Sorting: " + Arrays.toString(arr));
+
+        for(int i=0; i< arr.length-1; i++){
+            if(arr[i]>arr[i+1]){
+                isSorted= false;
+                break;
+            }
+        }
+
+       if (!isSorted) {
+           Arrays.sort(arr);
+           System.out.println("After Sorting: " + Arrays.toString(arr));
+
+
+           for (int i = 0; i < arr.length - 1; i++) {
+               if (arr[i] > arr[i + 1]) {
+                   isSorted = false;
+
+               }else {
+                   isSorted = true;
+               }
+           }
+       }
+       if(isSorted){
+           System.out.println("Sorted Array is validated: " + Arrays.toString(arr));
+       }
+
+    }
+
+
+    public static void removeDuplicatesStepByStep(int[] arr) {
+
+        List<Integer> list = new ArrayList<>();
+        for (int num : arr) {
+            list.add(num);
+        }
+
+        while (true) {
+
+            Set<Integer> seen = new HashSet<>();
+            boolean duplicateFound = false;
+
+            for (int i = 0; i < list.size(); i++) {
+
+                if (!seen.add(list.get(i))) {
+                    System.out.println("Duplicate Found: " + list.get(i));
+                    list.remove(i);
+                    System.out.println("Array After Removal: " + list);
+                    duplicateFound = true;
+                    break;
+                }
+            }
+
+            if (!duplicateFound) {
+                break;
+            }
+        }
+    }
+
+    public static void findVowels(String input){
+
+        Map<Character, Integer> map = new HashMap<>();
+        for (char ch:input.toCharArray()){
+            if (ch!=' '){
+                map.put(ch, map.getOrDefault(ch,0)+1);
+            }
+        }
+        System.out.println("Vowels Characters and count :");
+
+       for(Map.Entry<Character, Integer> entry : map.entrySet()){
+           if("aeiou".contains(entry.getKey().toString())){
+               System.out.println("Vowel is :"+ entry.getKey()+"-->"+entry.getValue());
+           }
+       }
+
+    }
+
+    public static Character firstNonRepeatedCharm(String str) {
+        if (str == null || str.isEmpty()) {
+            return null;
+        }
+
+        Map<Character, Integer> map = new LinkedHashMap<>();
+
+        // Count frequency
+        for (char ch : str.toCharArray()) {
+            map.put(ch, map.getOrDefault(ch, 0) + 1);
+        }
+
+        // Find first non-repeated
+        for (Map.Entry<Character, Integer> entry : map.entrySet()) {
+            if (entry.getValue() == 1) {
+                return entry.getKey();
+            }
+        }
+
+        return null; // if no unique character found
+    }
+
+    public static void findLongestWord(String sentence) {
+
+        if (sentence == null || sentence.trim().isEmpty()) {
+           System.out.println("String is empty");
+        }else {
+
+            String[] words = sentence.split("\\s+");
+            String longestWord = "";
+
+            for (String word : words) {
+                if (word.length() > longestWord.length()) {
+                    longestWord = word;
+                }
+            }
+            System.out.println("longest word is :"+ longestWord);
+        }
+    }
+
+    public static Character firstNonRepeatedChar(String str) {
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            if (str.indexOf(ch) == str.lastIndexOf(ch)) {
+                return ch;
+            }
+        }
+        return null;
+    }
 }
 
 
